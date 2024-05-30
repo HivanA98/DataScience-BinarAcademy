@@ -11,6 +11,7 @@ Gold Challange:
 Platinum Challange:
 - V.0.0.1 First Commit
 - V.0.0.2 Cleansing Update
+- V.0.0.3 Final Cleansing & Preprocess
 
 Project Timeline:
 ##
@@ -36,6 +37,25 @@ V.0.0.2 Cleansing Update
  - With Combinize Removechars and ChangeAlay, there are an improvment F1 score, but there is a big problem because when testing using predict, from Positive become Negative Labels 
 array([[0.07515561, 0.06784903, 0.85699536]]) -> array([[0.42839065, 0.17934933, 0.39226002]])
     So finally I decided to use only Removechars for Cleansing. = TFIDF-Cleansing.jpynb
+##
+
+V.0.0.3
+30 Mey 2024
+- There is a total change and the final version for Cleansing and Preprocess:
+ - Cleansing now using both RemoveChars and ChangeAlay
+ - I made my own Dictonary for ChangeAlay
+ - I update Remove chars, So only word is accepted. Any Number, Unique Word, Single Letter wil delete
+ - I still not using stopwords, but a words that not have any tendency and always show in all labels will be delete in RemoveChars
+ - The reason why I put stopwords word in remove chars is to easy for any update
+
+Result: 
+Awesome Improvement of F1 Score: 
+    - Negative from 77% to--> 79% T-3, 
+    - Neutral 81% from 78% to--> 81% T-3, 
+    - Positive 81% from 88% to--> 89% T-1,
+    - Accuracy from: 0.8445454545454545 --> 0.8463636363636363.
+Note: 
+ - The improvement ran without any deterioration of each traning sesion, so it's awesome and perfect improvment.
 
 ##
 Library:
