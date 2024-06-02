@@ -1,0 +1,4 @@
+https://drive.google.com/drive/u/0/folders/1yE2jRHPuTyh2mSFRw4SAlj1M8dWgyUw3
+
+Untuk model H5 taro di main folder flaskswagger
+untuk model of tfidf di ekstrak beserta folder model_of_tfidf
