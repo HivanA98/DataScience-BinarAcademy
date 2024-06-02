@@ -3,7 +3,7 @@
 ##
 Gold Challange:
 - Due to my previous @HIvanA98 account was hacked, I reupload it.
-  FInal Version feature:
+  Final Version feature:
   - "gold draft done cleaning.ipynb" --> Cleansing; 
   - "Gold draft Visualisasi.ipynb" --> Visualizing; 
   - "Draft Flask.py" --> Final Task, included clansing, flask, and swagger
