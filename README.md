@@ -12,6 +12,7 @@ Platinum Challange:
 - V.0.0.1 First Commit
 - V.0.0.2 Cleansing Update
 - V.0.0.3 Final Cleansing & Preprocess
+- V.0.0.4 Final Version with Team Merge Repository
 
 Project Timeline:
 ##
@@ -56,6 +57,14 @@ Awesome Improvement of F1 Score:
     - Accuracy from: 0.8445454545454545 --> 0.8463636363636363.
 Note: 
  - The improvement ran without any deterioration of each traning sesion, so it's awesome and perfect improvment.
+ ##
+
+ V.0.0.4
+ 3 June 2024
+Combinations from member team in to one repository,
+Where it's include Neural Network, LSTM, Flask and Swagger, and the PPT for presentation.
+
+The source is here: https://github.com/Ridzan12/24001074-18-Team_4-Analisis_Data_berdasarkan_Sentimen-Platinum
 
 ##
 Library:
