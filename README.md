@@ -61,10 +61,10 @@ Note:
 
  V.0.0.4
  3 June 2024
-Combinations from member team in to one repository,
-Where it's include Neural Network, LSTM, Flask and Swagger, and the PPT for presentation.
+- Combinations from member team in to one repository,
+- Where it's include Neural Network, LSTM, Flask and Swagger, and the PPT for presentation.
 
-The source is here: https://github.com/Ridzan12/24001074-18-Team_4-Analisis_Data_berdasarkan_Sentimen-Platinum
+- The source is here: https://github.com/Ridzan12/24001074-18-Team_4-Analisis_Data_berdasarkan_Sentimen-Platinum
 
 ##
 Library:
