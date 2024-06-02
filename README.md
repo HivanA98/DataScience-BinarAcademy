@@ -2,11 +2,11 @@
  My Learning Journey as Student Data Science at Binar Academy
 ##
 Gold Challange:
-    Due to my previous @HIvanA98 account was hacked, I reupload it.
-    FInal Version feature:
-    - "gold draft done cleaning.ipynb" --> Cleansing; 
-    - "Gold draft Visualisasi.ipynb" --> Visualizing; 
-    - "Draft Flask.py" --> Final Task, included clansing, flask, and swagger
+- Due to my previous @HIvanA98 account was hacked, I reupload it.
+  FInal Version feature:
+  - "gold draft done cleaning.ipynb" --> Cleansing; 
+  - "Gold draft Visualisasi.ipynb" --> Visualizing; 
+  - "Draft Flask.py" --> Final Task, included clansing, flask, and swagger
 ##
 Platinum Challange:
 - V.0.0.1 First Commit
