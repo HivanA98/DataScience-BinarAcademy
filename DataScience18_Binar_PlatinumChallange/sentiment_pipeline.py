@@ -16,7 +16,7 @@ Key differences vs the original notebooks:
   6. Reported metric is macro-F1, not just accuracy.
 
 Usage:
-    python sentiment_pipeline.py --data datacsv_tosql1.db --train
+    python sentiment_pipeline.py --data data/datacsv_tosql1.db --train
     from sentiment_pipeline import SentimentModel
     m = SentimentModel.load('sentiment_model.pkl'); m.predict(['pelayanan lambat sekali'])
 """
@@ -42,7 +42,7 @@ _MULTI = re.compile(r"\s+")
 _ELONG = re.compile(r"(.)\1{2,}")         # 'baguuuus' -> 'bagus'
 
 
-def load_alay(path: str = "new_kamusalay.csv") -> dict:
+def load_alay(path: str = "data/new_kamusalay.csv") -> dict:
     """Slang -> formal dictionary, built ONCE (original rebuilt it per call)."""
     d = pd.read_csv(path, header=None, encoding="latin-1", names=["slang", "formal"])
     return dict(zip(d["slang"].astype(str), d["formal"].astype(str)))
@@ -62,7 +62,7 @@ def clean_text(text: str, alay: dict) -> str:
 # Model wrapper
 # --------------------------------------------------------------------------- #
 class SentimentModel:
-    def __init__(self, alay_path: str = "new_kamusalay.csv"):
+    def __init__(self, alay_path: str = "data/new_kamusalay.csv"):
         self.alay = load_alay(alay_path)
         self.pipe = Pipeline([
             ("tfidf", TfidfVectorizer(ngram_range=(1, 2), min_df=2,
@@ -108,14 +108,23 @@ class SentimentModel:
     @staticmethod
     def load(path: str = "sentiment_model.pkl") -> "SentimentModel":
         with open(path, "rb") as f:
-            return pickle.load(f)
+            return _Unpickler(f).load()
+
+
+class _Unpickler(pickle.Unpickler):
+    """Also accepts models saved by `python sentiment_pipeline.py --train` before
+    the __main__ fix, whose pickle references __main__.SentimentModel."""
+    def find_class(self, module, name):
+        if module == "__main__" and name == "SentimentModel":
+            return SentimentModel
+        return super().find_class(module, name)
 
 
 # --------------------------------------------------------------------------- #
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", default="datacsv_tosql1.db")
-    ap.add_argument("--alay", default="new_kamusalay.csv")
+    ap.add_argument("--data", default="data/datacsv_tosql1.db")
+    ap.add_argument("--alay", default="data/new_kamusalay.csv")
     ap.add_argument("--train", action="store_true", help="fit on all data and save model")
     args = ap.parse_args()
 
@@ -136,4 +145,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # run via the importable module so the pickle references
+    # sentiment_pipeline.SentimentModel, not __main__.SentimentModel
+    import sentiment_pipeline
+    sentiment_pipeline.main()
