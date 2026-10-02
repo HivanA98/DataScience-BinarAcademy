@@ -45,6 +45,8 @@ An Indonesian text-cleansing module plus a **Flask + Swagger** REST API that ser
 
 **Hold-out result:** Accuracy **0.887** · Macro-F1 **0.854**
 
+📊 Original presentation: [`presentation/`](DataScience15_Binar_GoldChallange/presentation/)
+
 ### 💎 Platinum Challenge: Sentiment Analysis with Better Accuracy
 📁 [`DataScience18_Binar_PlatinumChallange/`](DataScience18_Binar_PlatinumChallange/)
 
@@ -62,6 +64,8 @@ A 3-class sentiment classifier (negative / neutral / positive) with a reproducib
     accuracy                          0.886     10933
    macro avg      0.859     0.854     0.857     10933
 ```
+
+📊 Original team presentation, cleansing screenshots, and manual calculation notes: [`presentation/`](DataScience18_Binar_PlatinumChallange/presentation/)
 
 ---
 
@@ -157,7 +161,7 @@ Detailed learning notes (in Indonesian) are in each project's `CATATAN_BELAJAR.m
 | V.0.0.4 | 3 Jun 2024 | Team merge: Neural Network, LSTM, Flask & Swagger ([original team repo](https://github.com/Ridzan12/24001074-18-Team_4-Analisis_Data_berdasarkan_Sentimen-Platinum)) |
 | **V.1.0.0** | **Oct 2026** | **Full refactor of Gold & Platinum: leakage-free evaluation, +6 pts Macro-F1, ~30× faster training** |
 
-> The original notebooks are still in this repo's git history.
+> The original presentation documents are kept in each project's `presentation/` folder. The original notebooks are still in this repo's git history.
 
 ---
 
