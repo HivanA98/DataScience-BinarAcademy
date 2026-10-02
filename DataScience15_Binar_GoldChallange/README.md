@@ -1,53 +1,54 @@
-# Gold Challenge — Refactor + Improvisasi
+# Gold Challenge: Refactor + Improvements
 
-Cleansing teks Bahasa Indonesia + API sentimen (Flask + Swagger), dibangun ulang
-dari proyek Binar DS-18. Fokus paket ini: **refactor** dan **improvisasi** kode —
-kode yang benar, cepat, dan bisa dipelihara, plus API yang berjalan. (Untuk
-optimasi akurasi penuh, lihat paket Platinum.)
+Indonesian text cleansing plus a sentiment API (Flask + Swagger), rebuilt
+from the Binar DS-18 project. This package focuses on **refactoring** and
+**improving** the code so it is correct, fast, and maintainable, and ships a
+working API. (For full accuracy optimization, see the Platinum package.)
 
-## Apa yang diperbaiki
+## What was fixed
 
-1. **Bug substring dihilangkan.** Normalisasi slang/kata dilakukan per kata utuh,
-   bukan `re.sub('di','',text)` yang merusak kata seperti `sedih`→`seh`.
-2. **Dictionary alay dibangun sekali** di saat import, bukan tiap pemanggilan
-   fungsi (15k entri × 11k baris = pemborosan besar di kode lama).
-3. **Negasi dijaga.** Penghapusan stopword bersifat opsional dan
-   mempertahankan `tidak/bukan/jangan/kurang` (kalau dibuang, sentimen terbalik).
-4. **Stemming opsional & mati secara default.** Sastrawi ~35 menit untuk 11k
-   baris dan tidak menaikkan akurasi di dataset ini (diuji: +0.0025 macro-F1).
-5. **Tanpa data leakage.** TF-IDF di-`fit` hanya di split training.
-6. **API dirapikan** jadi endpoint yang jelas dengan dokumentasi Swagger.
+1. **Substring bug removed.** Slang/word normalization works on whole words,
+   not `re.sub('di','',text)`, which broke words like `sedih` → `seh`.
+2. **The slang dictionary is built once** at import time, not on every
+   function call (15k entries × 11k rows was a big waste in the old code).
+3. **Negation is preserved.** Stopword removal is optional and keeps
+   `tidak/bukan/jangan/kurang` (removing them flips the sentiment).
+4. **Stemming is optional and off by default.** Sastrawi takes ~35 minutes for
+   11k rows and does not improve accuracy on this dataset (tested: +0.0025 macro-F1).
+5. **No data leakage.** TF-IDF is `fit` only on the training split.
+6. **The API was cleaned up** into clear endpoints with Swagger documentation.
 
-## Isi paket
+## Package contents
 
-- `cleansing.py` — modul cleansing (per kata, negation-aware, stemming opsional)
-- `train_gold.py` — latih + simpan `model_gold.pkl` & `tfidf_gold.pkl`
-- `app.py` — API Flask + Swagger
-- `model_gold.pkl`, `tfidf_gold.pkl` — artefak terlatih siap pakai
-- `data/` — dataset + kamus + stopword
+- `cleansing.py`: cleansing module (word-level, negation-aware, optional stemming)
+- `train_gold.py`: trains and saves `model_gold.pkl` & `tfidf_gold.pkl`
+- `app.py`: Flask + Swagger API
+- `model_gold.pkl`, `tfidf_gold.pkl`: ready-to-use trained artifacts
+- `data/`: dataset, slang dictionary, and stopword list
+- `presentation/`: original Gold Challenge presentation
 - `requirements.txt`
 
-Hasil hold-out model Gold: Accuracy 0.887, Macro-F1 0.854.
+Gold model hold-out result: Accuracy 0.887, Macro-F1 0.854.
 
-## Cara pakai
+## Usage
 
 ```bash
 pip install -r requirements.txt
-python train_gold.py        # menghasilkan model_gold.pkl + tfidf_gold.pkl
-python app.py               # jalankan API
-# buka http://127.0.0.1:5000/docs  untuk Swagger UI
+python train_gold.py        # produces model_gold.pkl + tfidf_gold.pkl
+python app.py               # start the API
+# open http://127.0.0.1:5000/docs for the Swagger UI
 ```
 
-Endpoint:
+Endpoints:
 
-| Method | Path | Fungsi |
+| Method | Path | Description |
 |---|---|---|
 | GET | `/` | health check |
-| POST | `/cleanse` | `{"text": "..."}` → teks bersih |
-| POST | `/predict` | `{"text": "..."}` → label + probabilitas |
-| POST | `/predict-file` | upload CSV (kolom `text`) → prediksi per baris |
+| POST | `/cleanse` | `{"text": "..."}` → cleaned text |
+| POST | `/predict` | `{"text": "..."}` → label + probabilities |
+| POST | `/predict-file` | upload a CSV (`text` column) → per-row predictions |
 
-Contoh:
+Example:
 
 ```bash
 curl -X POST http://127.0.0.1:5000/predict \
@@ -56,4 +57,4 @@ curl -X POST http://127.0.0.1:5000/predict \
 # -> {"sentiment": "negative", ...}
 ```
 
-Catatan pembelajaran lengkap ada di `CATATAN_BELAJAR.md`.
+Full learning notes (in Indonesian) are in `CATATAN_BELAJAR.md`.

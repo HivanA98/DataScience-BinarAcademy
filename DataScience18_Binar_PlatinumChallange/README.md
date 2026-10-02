@@ -1,20 +1,20 @@
-# Platinum Challenge — Refactor + Peningkatan Akurasi
+# Platinum Challenge: Refactor + Accuracy Improvement
 
-Analisis sentimen Bahasa Indonesia (3 kelas: negative / neutral / positive),
-dibangun ulang dari proyek Binar DS-18. Fokus paket ini: **refactor**,
-**improvisasi**, dan **peningkatan akurasi yang terverifikasi**.
+Indonesian sentiment analysis (3 classes: negative / neutral / positive),
+rebuilt from the Binar DS-18 project. This package focuses on **refactoring**,
+**improvements**, and **verified accuracy gains**.
 
-## Hasil (bebas leakage, 5-fold StratifiedKFold, 10.933 baris)
+## Results (leakage-free, 5-fold StratifiedKFold, 10,933 rows)
 
-| | Accuracy | Macro-F1 | Waktu latih |
+| | Accuracy | Macro-F1 | Training time |
 |---|---|---|---|
-| Resep lama (MLP default, tanpa leakage) | 0.838 | 0.797 | ~124 dtk |
-| **Hasil refactor (LinearSVC balanced)** | **0.886** | **0.857** | **~4 dtk** |
+| Original recipe (default MLP, no leakage) | 0.838 | 0.797 | ~124 s |
+| **Refactored (balanced LinearSVC)** | **0.886** | **0.857** | **~4 s** |
 
-Macro-F1 dipakai sebagai metrik utama karena kelas sangat timpang
-(positive 58% / negative 31% / neutral 10%), sehingga accuracy menyesatkan.
+Macro-F1 is the main metric because the classes are heavily imbalanced
+(positive 58% / negative 31% / neutral 10%), which makes accuracy misleading.
 
-Laporan per kelas (out-of-fold, model akhir):
+Per-class report (out-of-fold, final model):
 
 ```
               precision    recall  f1-score   support
@@ -25,36 +25,38 @@ Laporan per kelas (out-of-fold, model akhir):
    macro avg      0.859     0.854     0.857     10933
 ```
 
-## Apa yang diubah dan kenapa
+## What changed and why
 
-1. **Hilangkan data leakage.** TF-IDF lama di-`fit` ke seluruh data sebelum
-   split. Di sini vectorizer di-`fit` hanya di dalam lipatan training (lewat
-   `Pipeline` + `StratifiedKFold`). Angka lama 0.836 turun jadi 0.797 saat
-   leakage dibuang — jadi 0.857 yang baru adalah kenaikan yang jujur.
-2. **Metrik yang benar.** Macro-F1 + confusion matrix + laporan per kelas,
-   bukan accuracy tunggal.
-3. **Cleansing diperbaiki.** Bug `re.sub` substring (yang merusak
-   `sedih`→`seh`) diganti normalisasi per kata. Dictionary alay dibangun sekali.
-4. **Negasi dijaga.** Stopword tidak dibuang (daftar lama menghapus
-   `tidak/bukan/jangan` — membalik sentimen).
-5. **Ketimpangan kelas ditangani** dengan `class_weight='balanced'` →
-   recall neutral naik 0.73→0.79.
-6. **Model diganti** dari MLP default ke LinearSVC (lebih akurat & ~30x cepat).
+1. **Data leakage removed.** The old TF-IDF was `fit` on the full dataset
+   before splitting. Here the vectorizer is `fit` only inside the training
+   folds (via `Pipeline` + `StratifiedKFold`). The old 0.836 dropped to 0.797
+   once the leakage was removed, so the new 0.857 is an honest improvement.
+2. **Correct metrics.** Macro-F1 + confusion matrix + per-class report,
+   not accuracy alone.
+3. **Cleansing fixed.** The `re.sub` substring bug (which turned
+   `sedih` → `seh`) was replaced with word-level normalization. The slang
+   dictionary is built once.
+4. **Negation preserved.** Stopwords are not removed (the old list deleted
+   `tidak/bukan/jangan`, which flips the sentiment).
+5. **Class imbalance handled** with `class_weight='balanced'`, so
+   neutral recall rose from 0.73 to 0.79.
+6. **Model replaced** from the default MLP with LinearSVC (more accurate and ~30× faster).
 
-## Isi paket
+## Package contents
 
-- `sentiment_pipeline.py` — pipeline final (train / evaluate / predict / save-load)
-- `benchmark.py` — mereproduksi semua angka di atas (baseline, ablation, bake-off)
-- `sentiment_model.pkl` — model terlatih siap pakai
-- `data/` — dataset SQLite + kamus alay + stopword
+- `sentiment_pipeline.py`: final pipeline (train / evaluate / predict / save-load)
+- `benchmark.py`: reproduces every number above (baseline, ablation, bake-off)
+- `sentiment_model.pkl`: ready-to-use trained model
+- `data/`: SQLite dataset, slang dictionary, and stopword list
+- `presentation/`: original team presentation, cleansing screenshots, and manual calculation notes
 - `requirements.txt`
 
-## Cara pakai
+## Usage
 
 ```bash
 pip install -r requirements.txt
-python sentiment_pipeline.py --data data/datacsv_tosql1.db --train   # latih + evaluasi
-python benchmark.py                                                  # reproduksi tabel
+python sentiment_pipeline.py --data data/datacsv_tosql1.db --train   # train + evaluate
+python benchmark.py                                                  # reproduce the tables
 
 # inference
 python -c "from sentiment_pipeline import SentimentModel; \
@@ -62,5 +64,5 @@ m=SentimentModel.load('sentiment_model.pkl'); \
 print(m.predict(['pelayanannya lambat dan tidak ramah']))"
 ```
 
-Langkah lanjutan (IndoBERT, penanganan kelas neutral, tuning) ada di
-`CATATAN_BELAJAR.md`.
+Next steps (IndoBERT, neutral-class handling, tuning) are described in
+`CATATAN_BELAJAR.md` (in Indonesian).
