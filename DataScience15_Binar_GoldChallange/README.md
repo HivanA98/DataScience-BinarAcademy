@@ -1,5 +1,7 @@
 # Gold Challenge: Refactor + Improvements
 
+[![Gold CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml)
+
 Indonesian text cleansing plus a sentiment API (Flask + Swagger), rebuilt
 from the Binar DS-18 project. This package focuses on **refactoring** and
 **improving** the code so it is correct, fast, and maintainable, and ships a
@@ -56,5 +58,15 @@ curl -X POST http://127.0.0.1:5000/predict \
   -d '{"text": "makanan tidak enak sama sekali"}'
 # -> {"sentiment": "negative", ...}
 ```
+
+## Tests
+
+```bash
+pip install pytest
+python -m pytest    # cleansing rules + every API endpoint
+```
+
+GitHub Actions (`.github/workflows/gold.yml`) installs the requirements, retrains
+the model, and runs these tests on every push or PR that touches this folder.
 
 Full learning notes (in Indonesian) are in `CATATAN_BELAJAR.md`.

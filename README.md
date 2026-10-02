@@ -7,6 +7,8 @@
 ![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-Docs-85EA2D?logo=swagger&logoColor=black)
 ![Status](https://img.shields.io/badge/status-refactored-brightgreen)
+[![Gold CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml)
+[![Platinum CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml)
 
 ---
 
@@ -130,6 +132,8 @@ python sentiment_pipeline.py --data data/datacsv_tosql1.db --train
 python benchmark.py
 ```
 
+**Tests:** run `pip install pytest && python -m pytest` inside either folder. GitHub Actions retrains each model and runs its tests on every push or PR that touches that folder.
+
 ---
 
 ## 🧭 Roadmap
@@ -139,7 +143,8 @@ python benchmark.py
 - [ ] Systematic hyperparameter tuning with `GridSearchCV` / `RandomizedSearchCV`
 - [ ] Pre-trained word embeddings (fastText / Word2Vec) for the LSTM path
 - [ ] Explainability with model coefficients, LIME, or SHAP
-- [ ] MLOps: model versioning, `pytest` API tests, drift monitoring
+- [x] CI: `pytest` cleansing + API tests on GitHub Actions
+- [ ] MLOps: model versioning, drift monitoring
 
 Detailed learning notes (in Indonesian) are in each project's `CATATAN_BELAJAR.md`.
 

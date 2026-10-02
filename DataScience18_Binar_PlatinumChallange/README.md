@@ -1,5 +1,7 @@
 # Platinum Challenge: Refactor + Accuracy Improvement
 
+[![Platinum CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml)
+
 Indonesian sentiment analysis (3 classes: negative / neutral / positive),
 rebuilt from the Binar DS-18 project. This package focuses on **refactoring**,
 **improvements**, and **verified accuracy gains**.
@@ -63,6 +65,18 @@ python -c "from sentiment_pipeline import SentimentModel; \
 m=SentimentModel.load('sentiment_model.pkl'); \
 print(m.predict(['pelayanannya lambat dan tidak ramah']))"
 ```
+
+## Tests
+
+```bash
+pip install pytest
+python -m pytest    # cleansing rules, data loading, predictions
+```
+
+GitHub Actions (`.github/workflows/platinum.yml`) runs the 5-fold CV, retrains
+the model, and runs these tests on every push or PR that touches this folder.
+`benchmark.py` can be run on demand from the Actions tab (**Run workflow** →
+tick *benchmark*).
 
 Next steps (IndoBERT, neutral-class handling, tuning) are described in
 `CATATAN_BELAJAR.md` (in Indonesian).

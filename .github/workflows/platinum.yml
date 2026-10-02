@@ -1,0 +1,48 @@
+name: Platinum CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "DataScience18_Binar_PlatinumChallange/**"
+      - ".github/workflows/platinum.yml"
+  pull_request:
+    paths:
+      - "DataScience18_Binar_PlatinumChallange/**"
+      - ".github/workflows/platinum.yml"
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: "Also run the full benchmark (includes the slow MLP baseline)"
+        type: boolean
+        default: false
+
+defaults:
+  run:
+    working-directory: DataScience18_Binar_PlatinumChallange
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: DataScience18_Binar_PlatinumChallange/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+
+      # 5-fold CV + retrain so the artifact matches the installed scikit-learn version
+      - name: Cross-validate and train model
+        run: python sentiment_pipeline.py --train
+
+      - name: Run tests
+        run: python -m pytest -v
+
+      - name: Benchmark
+        if: github.event_name == 'workflow_dispatch' && inputs.benchmark
+        run: python benchmark.py

@@ -1,0 +1,42 @@
+name: Gold CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "DataScience15_Binar_GoldChallange/**"
+      - ".github/workflows/gold.yml"
+  pull_request:
+    paths:
+      - "DataScience15_Binar_GoldChallange/**"
+      - ".github/workflows/gold.yml"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: DataScience15_Binar_GoldChallange
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: DataScience15_Binar_GoldChallange/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+
+      - name: Cleansing demo
+        run: python cleansing.py
+
+      # retrain so the artifacts match the installed scikit-learn version
+      - name: Train model
+        run: python train_gold.py
+
+      - name: Run tests (cleansing + API)
+        run: python -m pytest -v
