@@ -7,8 +7,8 @@
 ![Flask](https://img.shields.io/badge/Flask-API-000000?logo=flask&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-Docs-85EA2D?logo=swagger&logoColor=black)
 ![Status](https://img.shields.io/badge/status-refactored-brightgreen)
-[![Gold CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml)
-[![Platinum CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml)
+[![Gold CI](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml)
+[![Platinum CI](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml)
 
 ---
 
@@ -106,7 +106,7 @@ A 3-class sentiment classifier (negative / neutral / positive) with a reproducib
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/hivanarmadi/DataScience-BinarAcademy.git
+git clone https://github.com/HivanA98/DataScience-BinarAcademy.git
 cd DataScience-BinarAcademy
 ```
 

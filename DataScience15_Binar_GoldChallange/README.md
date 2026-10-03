@@ -1,6 +1,6 @@
 # Gold Challenge: Refactor + Improvements
 
-[![Gold CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/gold.yml)
+[![Gold CI](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml/badge.svg)](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/gold.yml)
 
 Indonesian text cleansing plus a sentiment API (Flask + Swagger), rebuilt
 from the Binar DS-18 project. This package focuses on **refactoring** and

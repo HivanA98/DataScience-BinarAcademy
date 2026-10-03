@@ -1,6 +1,6 @@
 # Platinum Challenge: Refactor + Accuracy Improvement
 
-[![Platinum CI](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/hivanarmadi/DataScience-BinarAcademy/actions/workflows/platinum.yml)
+[![Platinum CI](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml/badge.svg)](https://github.com/HivanA98/DataScience-BinarAcademy/actions/workflows/platinum.yml)
 
 Indonesian sentiment analysis (3 classes: negative / neutral / positive),
 rebuilt from the Binar DS-18 project. This package focuses on **refactoring**,
