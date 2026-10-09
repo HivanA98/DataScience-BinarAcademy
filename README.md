@@ -1,6 +1,8 @@
 # 🎓 Data Science @ Binar Academy
 
-> My learning journey as a Data Science student at **Binar Academy**: Indonesian-language NLP, from text cleansing to a production-style sentiment API.
+> My learning journey as a Data Science student at **Binar Academy**: Indonesian-language NLP and **sentiment analysis**, from text cleansing to a production-style Flask + Swagger API.
+>
+> 🌐 **Website:** [hivana98.github.io/DataScience-BinarAcademy](https://hivana98.github.io/DataScience-BinarAcademy/)
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-F7931E?logo=scikitlearn&logoColor=white)
@@ -47,7 +49,7 @@ An Indonesian text-cleansing module plus a **Flask + Swagger** REST API that ser
 
 **Hold-out result:** Accuracy **0.887** · Macro-F1 **0.854**
 
-📊 Original presentation: [`presentation/`](DataScience15_Binar_GoldChallange/presentation/)
+📊 Original presentation: [`presentation/`](https://github.com/HivanA98/DataScience-BinarAcademy/tree/main/DataScience15_Binar_GoldChallange/presentation)
 
 ### 💎 Platinum Challenge: Sentiment Analysis with Better Accuracy
 📁 [`DataScience18_Binar_PlatinumChallange/`](DataScience18_Binar_PlatinumChallange/)
@@ -67,7 +69,7 @@ A 3-class sentiment classifier (negative / neutral / positive) with a reproducib
    macro avg      0.859     0.854     0.857     10933
 ```
 
-📊 Original team presentation, cleansing screenshots, and manual calculation notes: [`presentation/`](DataScience18_Binar_PlatinumChallange/presentation/)
+📊 Original team presentation, cleansing screenshots, and manual calculation notes: [`presentation/`](https://github.com/HivanA98/DataScience-BinarAcademy/tree/main/DataScience18_Binar_PlatinumChallange/presentation)
 
 ---
 
@@ -146,7 +148,7 @@ python benchmark.py
 - [x] CI: `pytest` cleansing + API tests on GitHub Actions
 - [ ] MLOps: model versioning, drift monitoring
 
-Detailed learning notes (in Indonesian) are in each project's `CATATAN_BELAJAR.md`.
+Detailed learning notes (in Indonesian): [Gold](DataScience15_Binar_GoldChallange/CATATAN_BELAJAR.md) · [Platinum](DataScience18_Binar_PlatinumChallange/CATATAN_BELAJAR.md).
 
 ---
 

@@ -79,4 +79,4 @@ the model, and runs these tests on every push or PR that touches this folder.
 tick *benchmark*).
 
 Next steps (IndoBERT, neutral-class handling, tuning) are described in
-`CATATAN_BELAJAR.md` (in Indonesian).
+[CATATAN_BELAJAR.md](CATATAN_BELAJAR.md) (in Indonesian).

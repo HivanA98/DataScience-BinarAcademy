@@ -69,4 +69,4 @@ python -m pytest    # cleansing rules + every API endpoint
 GitHub Actions (`.github/workflows/gold.yml`) installs the requirements, retrains
 the model, and runs these tests on every push or PR that touches this folder.
 
-Full learning notes (in Indonesian) are in `CATATAN_BELAJAR.md`.
+Full learning notes (in Indonesian) are in [CATATAN_BELAJAR.md](CATATAN_BELAJAR.md).

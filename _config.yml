@@ -1,0 +1,61 @@
+# GitHub Pages (Jekyll) config: https://hivana98.github.io/DataScience-BinarAcademy/
+title: Indonesian NLP & Sentiment Analysis · Binar Academy
+description: >-
+  Indonesian sentiment analysis portfolio: text cleansing, leakage-free
+  LinearSVC (Macro-F1 0.857) and a Flask + Swagger API, built at Binar Academy.
+url: https://hivana98.github.io
+baseurl: /DataScience-BinarAcademy
+lang: en-US
+author:
+  name: Ivan Armadi Hasugian
+  url: https://github.com/HivanA98
+
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# per-page SEO titles/descriptions without adding front matter to the READMEs
+# (front matter would show up as a table when GitHub renders them)
+defaults:
+  - scope: {path: README.md}
+    values:
+      title: Indonesian NLP & Sentiment Analysis · Binar Academy
+  - scope: {path: DataScience15_Binar_GoldChallange/README.md}
+    values:
+      title: "Gold Challenge: Indonesian Text Cleansing + Sentiment API (Flask, Swagger)"
+      description: >-
+        Refactored Indonesian text-cleansing module and Flask + Swagger
+        sentiment API with word-level slang normalization and negation-aware
+        stopwords. Hold-out accuracy 0.887.
+  - scope: {path: DataScience18_Binar_PlatinumChallange/README.md}
+    values:
+      title: "Platinum Challenge: Indonesian Sentiment Analysis with scikit-learn"
+      description: >-
+        3-class Indonesian sentiment classifier: leakage-free 5-fold CV,
+        balanced LinearSVC, Macro-F1 0.797 to 0.857 and ~30x faster training
+        than the original MLP.
+  - scope: {path: DataScience15_Binar_GoldChallange/CATATAN_BELAJAR.md}
+    values:
+      title: "Catatan Belajar: Analisis Sentimen (Gold)"
+      description: Learning notes (Indonesian) on data leakage, macro-F1, negation handling, and model choice for Indonesian sentiment analysis.
+  - scope: {path: DataScience18_Binar_PlatinumChallange/CATATAN_BELAJAR.md}
+    values:
+      title: "Catatan Belajar: Analisis Sentimen (Platinum)"
+      description: Learning notes (Indonesian) on data leakage, macro-F1, negation handling, and model choice for Indonesian sentiment analysis.
+  # Search Console verification file: keep it out of the sitemap
+  - scope: {path: google8740ae0d0e166f0e.html}
+    values:
+      sitemap: false
+
+# don't publish datasets, model binaries, or test code on the site
+exclude:
+  - DataScience15_Binar_GoldChallange/data
+  - DataScience15_Binar_GoldChallange/tests
+  - DataScience15_Binar_GoldChallange/model_gold.pkl
+  - DataScience15_Binar_GoldChallange/tfidf_gold.pkl
+  - DataScience15_Binar_GoldChallange/requirements.txt
+  - DataScience18_Binar_PlatinumChallange/data
+  - DataScience18_Binar_PlatinumChallange/tests
+  - DataScience18_Binar_PlatinumChallange/sentiment_model.pkl
+  - DataScience18_Binar_PlatinumChallange/requirements.txt
