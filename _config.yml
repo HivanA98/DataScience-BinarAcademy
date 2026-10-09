@@ -1,5 +1,6 @@
 # GitHub Pages (Jekyll) config: https://hivana98.github.io/DataScience-BinarAcademy/
-title: Indonesian NLP & Sentiment Analysis · Binar Academy
+title: Indonesian Sentiment Analysis
+tagline: Binar Academy Portfolio
 description: >-
   Indonesian sentiment analysis portfolio: text cleansing, leakage-free
   LinearSVC (Macro-F1 0.857) and a Flask + Swagger API, built at Binar Academy.
@@ -20,17 +21,17 @@ plugins:
 defaults:
   - scope: {path: README.md}
     values:
-      title: Indonesian NLP & Sentiment Analysis · Binar Academy
+      title: Indonesian Sentiment Analysis  # same as site title -> "<title> | <tagline>"
   - scope: {path: DataScience15_Binar_GoldChallange/README.md}
     values:
-      title: "Gold Challenge: Indonesian Text Cleansing + Sentiment API (Flask, Swagger)"
+      title: "Gold: Indonesian Text Cleansing & Sentiment API"
       description: >-
         Refactored Indonesian text-cleansing module and Flask + Swagger
         sentiment API with word-level slang normalization and negation-aware
         stopwords. Hold-out accuracy 0.887.
   - scope: {path: DataScience18_Binar_PlatinumChallange/README.md}
     values:
-      title: "Platinum Challenge: Indonesian Sentiment Analysis with scikit-learn"
+      title: "Platinum: Indonesian Sentiment Analysis with scikit-learn"
       description: >-
         3-class Indonesian sentiment classifier: leakage-free 5-fold CV,
         balanced LinearSVC, Macro-F1 0.797 to 0.857 and ~30x faster training
